@@ -71,3 +71,11 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+<!-- start pgAdmin4 -->
+<!-- cd pgadmin4 -->
+<!-- source pgadmin4env/bin/activate -->
+<!-- python pgadmin4env/lib/python3.8/site-packages/pgadmin4/pgAdmin4.py -->
+<!-- http://127.0.0.1:5050 -->
+<!-- alex root -->

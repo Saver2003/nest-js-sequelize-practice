@@ -3,21 +3,20 @@ import { SequelizeModule } from "@nestjs/sequelize";
 import { ConfigModule } from "@nestjs/config";
 
 import { UsersModule } from './users/users.module';
-import * as process from "process";
-// import * as process from "process";
+import { getEnvPath } from './common/helper/env.helper';
+import { User } from "./users/users.model";
 
+const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
-
-
-console.log(process.env)
 @Module({
     controllers: [],
     providers: [],
     imports: [
-        ConfigModule.forRoot({
-            isGlobal: true,
-            envFilePath: `${process.env.NODE_ENV}.env`
-        }),
+        ConfigModule.forRoot(
+          {
+            envFilePath, isGlobal: true
+        }
+        ),
         SequelizeModule.forRoot({
             dialect: 'postgres',
             host: process.env.POSTGRES_HOST,
@@ -25,7 +24,7 @@ console.log(process.env)
             username: process.env.POSTGRES_USER,
             password: process.env.POSTGRES_PASSWORD,
             database: process.env.POSTGRES_DB,
-            models: [],
+            models: [User],
             autoLoadModels: true,
           }),
         UsersModule,
